@@ -414,7 +414,7 @@ function expandConfig(container, userConfig) {
   userConfig = extend(true, {}, Quill.DEFAULTS, { modules: moduleConfig }, themeConfig, userConfig);
   ['bounds', 'container', 'scrollingContainer'].forEach(function(key) {
     if (typeof userConfig[key] === 'string') {
-      userConfig[key] = document.querySelector(userConfig[key]);
+      userConfig[key] = this.container.ownerDocument.querySelector(userConfig[key]);
     }
   });
   userConfig.modules = Object.keys(userConfig.modules).reduce(function(config, name) {
